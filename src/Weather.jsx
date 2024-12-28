@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import searchicon from './assets/search.png';
 import storm from './assets/storm.png';
 import sun from './assets/sun.png';
+import snow from './assets/snow.png';
 import weathericon from './assets/weather-app.png';
 
 const Weather = () => {
@@ -54,7 +55,7 @@ const Weather = () => {
                     </div>
                 </div>
                 {error && <div className='text-red-500'>{error}</div>}
-                <div className='mt-16  w-full h-[50%] flex flex-col items-center justify-center'>
+                <div className='mt-8  w-full h-[50%] flex flex-col items-center justify-center'>
 
                     {weather && (
                         <div className='flex flex-col items-center gap-5 justify-center w-full'>
@@ -85,11 +86,15 @@ const Weather = () => {
                                     </div>
                                 )}
 
-                                
+{!['Thunderstorm', 'Clouds', 'Rain', 'Clear', 'Haze'].includes(weather?.weather?.[0]?.main) && (
+  <div>
+    <img src={snow} alt="Default Snow Weather" className="size-32" />
+  </div>
+)}                                
                             </div>
-                            <h1 className='text-white font-bold text-4xl p-2'>City name : {weather.name}</h1>
-                            <h1 className='text-white text-3xl font-bold p-2'>Temperature : <span className='text-2xl'>{weather.main.temp}°C</span></h1>
-                            <h1 className='text-white text-3xl font-bold p-2'>Weather : <span className='text-2xl'>{weather.weather[0].main}</span></h1>
+                            <h1 className='text-white font-bold md:text-4xl text-2xl p-2'>City name : {weather.name}</h1>
+                            <h1 className='text-white md:text-3xl text-2xl font-bold p-2'>Temperature : <span className='text-2xl'>{weather.main.temp}°C</span></h1>
+                            <h1 className='text-white md:text-3xl text-2xl font-bold p-2'>Weather : <span className='text-2xl'>{weather.weather[0].main}</span></h1>
                         </div>
                     )}
                 </div>
