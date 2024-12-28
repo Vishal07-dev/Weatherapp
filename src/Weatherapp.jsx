@@ -4,7 +4,7 @@ import storm from './assets/storm.png';
 import sun from './assets/sun.png';
 import weathericon from './assets/weather-app.png';
 
-const Weatherapp = () => {
+const weatherapp = () => {
   const [search, setSearch] = useState('');
   const [weather, setWeather] = useState(null);
   const [error, setError] = useState('');
@@ -70,7 +70,7 @@ const Weatherapp = () => {
   );
 }
 
-export default Weatherapp;
+export default weatherapp;
 
 
   // 3ba3ae61ba346811750521094f0d487e
