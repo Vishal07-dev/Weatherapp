@@ -40,8 +40,8 @@ const Weather = () => {
 
     return (
         <div className='bg-black w-full h-screen flex justify-center items-center'>
-            <div className='bg-gradient-to-r from-cyan-900 via-blue-800 to-sky-800 p-4 flex flex-col gap-10 h-screen justify-center items-center md:w-[50%]'>
-                <h1 className='text-white font-bold text-4xl'>Weather App</h1>
+            <div className='bg-gradient-to-r from-cyan-900 via-blue-800 to-sky-800 p-4 flex flex-col  h-screen justify-center items-center md:w-[50%]'>
+                <h1 className='text-white font-bold text-4xl m-10'>Weather App</h1>
                 <div className='w-full h-fit flex gap-5 items-center justify-center p-10'>
                     <input
                         type="text"
@@ -54,7 +54,7 @@ const Weather = () => {
                     </div>
                 </div>
                 {error && <div className='text-red-500'>{error}</div>}
-                <div className='w-full h-[50%] flex flex-col items-center justify-center'>
+                <div className='mt-16  w-full h-[50%] flex flex-col items-center justify-center'>
 
                     {weather && (
                         <div className='flex flex-col items-center gap-5 justify-center w-full'>
@@ -79,7 +79,7 @@ const Weather = () => {
                                         <img src={sun} alt="Rainy Weather" className='size-32' />
                                     </div>
                                 )}
-                                {weather?.weather?.[0]?.main === 'Haze' || 'Mist' && (
+                                {weather?.weather?.[0]?.main === 'Haze' && (
                                     <div>
                                         <img src={weathericon} alt="Rainy Weather" className='size-32' />
                                     </div>
