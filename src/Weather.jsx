@@ -6,7 +6,6 @@ import snow from './assets/snow.png';
 import weathericon from './assets/weather-app.png';
 
 const Weather = () => {
-
     const [search, setSearch] = useState('');
     const [weather, setWeather] = useState(null);
     const [error, setError] = useState('');
@@ -29,78 +28,65 @@ const Weather = () => {
         } catch (error) {
             setError(error.message);
         }
-    }
-
-    //   const weatherIcons = {
-    //     Thunderstorm: storm,
-    //     Clouds: weathericon,
-    //     Rain: storm,
-    //     Clear: sun,
-    //     Haze: weathericon,
-    //   };
+    };
 
     return (
-        <div className='bg-black w-full h-screen flex justify-center items-center'>
-            <div className='bg-gradient-to-r from-cyan-900 via-blue-800 to-sky-800 p-4 flex flex-col  h-screen justify-center items-center md:w-[50%]'>
-                <h1 className='text-white font-bold text-4xl m-10'>Weather App</h1>
-                <div className='w-full h-fit flex gap-5 items-center justify-center p-10'>
+        <div className="bg-gradient-to-r from-cyan-600 via-blue-500 to-sky-400 w-full h-screen flex justify-center items-center">
+            <div className="bg-white shadow-xl rounded-xl p-8 flex flex-col h-auto justify-center items-center md:w-[40%]">
+                <h1 className="text-gray-800 font-bold text-4xl mb-6">Weather App</h1>
+                <div className="w-full flex gap-4 items-center justify-center">
                     <input
                         type="text"
-                        placeholder='search'
-                        className='h-fit md:w-[50%] p-2 rounded-xl'
+                        placeholder="Enter City"
+                        className="h-12 w-[70%] px-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-cyan-500"
                         onChange={(e) => setSearch(e.target.value)}
                     />
-                    <div className='size-10 bg-white p-2 rounded-xl hover:scale-110 hover:cursor-pointer hover:shadow-lg'>
-                        <img src={searchicon} alt="Search" onClick={handleClick} />
+                    <div
+                        className="bg-cyan-100 p-3 rounded-lg hover:bg-cyan-600 transition duration-300 cursor-pointer"
+                        onClick={handleClick}
+                    >
+                        <img src={searchicon} alt="Search" className="h-6" />
                     </div>
                 </div>
-                {error && <div className='text-red-500'>{error}</div>}
-                <div className='mt-8  w-full h-[50%] flex flex-col items-center justify-center'>
-
+                {error && <div className="text-red-500 mt-4">{error}</div>}
+                <div className="mt-8 w-full flex flex-col items-center">
                     {weather && (
-                        <div className='flex flex-col items-center gap-5 justify-center w-full'>
+                        <div className="flex flex-col items-center gap-5 w-full">
                             <div>
                                 {weather?.weather?.[0]?.main === 'Thunderstorm' && (
-                                    <div>
-                                        <img src={storm} alt="Rainy Weather" className='size-25' />
-                                    </div>
+                                    <img src={storm} alt="Thunderstorm Weather" className="h-20" />
                                 )}
                                 {weather?.weather?.[0]?.main === 'Clouds' && (
-                                    <div>
-                                        <img src={weathericon} alt="Rainy Weather" className='size-32' />
-                                    </div>
+                                    <img src={weathericon} alt="Cloudy Weather" className="h-20" />
                                 )}
                                 {weather?.weather?.[0]?.main === 'Rain' && (
-                                    <div>
-                                        <img src={storm} alt="Rainy Weather" className='size-32' />
-                                    </div>
+                                    <img src={storm} alt="Rainy Weather" className="h-20" />
                                 )}
                                 {weather?.weather?.[0]?.main === 'Clear' && (
-                                    <div>
-                                        <img src={sun} alt="Rainy Weather" className='size-32' />
-                                    </div>
+                                    <img src={sun} alt="Sunny Weather" className="h-20" />
                                 )}
                                 {weather?.weather?.[0]?.main === 'Haze' && (
-                                    <div>
-                                        <img src={weathericon} alt="Rainy Weather" className='size-32' />
-                                    </div>
+                                    <img src={weathericon} alt="Hazy Weather" className="h-20" />
                                 )}
-
-{!['Thunderstorm', 'Clouds', 'Rain', 'Clear', 'Haze'].includes(weather?.weather?.[0]?.main) && (
-  <div>
-    <img src={snow} alt="Default Snow Weather" className="size-32" />
-  </div>
-)}                                
+                                {!['Thunderstorm', 'Clouds', 'Rain', 'Clear', 'Haze'].includes(weather?.weather?.[0]?.main) && (
+                                    <img src={snow} alt="Default Snow Weather" className="h-20" />
+                                )}
                             </div>
-                            <h1 className='text-white font-bold md:text-4xl text-2xl p-2'>City name : {weather.name}</h1>
-                            <h1 className='text-white md:text-3xl text-2xl font-bold p-2'>Temperature : <span className='text-2xl'>{weather.main.temp}°C</span></h1>
-                            <h1 className='text-white md:text-3xl text-2xl font-bold p-2'>Weather : <span className='text-2xl'>{weather.weather[0].main}</span></h1>
+                            <h1 className="text-gray-800 font-bold text-2xl">
+                                City: <span className="text-cyan-600">{weather.name}</span>
+                            </h1>
+                            <h1 className="text-gray-800 font-bold text-2xl">
+                                Temperature: <span className="text-cyan-600">{weather.main.temp}°C</span>
+                            </h1>
+                            <h1 className="text-gray-800 font-bold text-2xl">
+                                Weather: <span className="text-cyan-600">{weather.weather[0].main}</span>
+                            </h1>
                         </div>
                     )}
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Weather
+export default Weather;
